@@ -77,12 +77,11 @@ function agregarAlCarrito(idProducto) {
 // No se debe superar el stock disponible.
 function aumentarCantidad(idProducto) {
     const carrito = obtenerCarrito();
-    const itemExistente = carrito.find((item) => item.idProducto === idProducto);
-    const producto = productos.find()((producto) => producto.id === idProducto);
+    const item = carrito.find((item) => item.idProducto === idProducto);
+    const producto = productos.find((producto) => producto.id === idProducto);
 
-    if (itemExistente) {
-        if (itemExistente.cantidad < producto.stock) {
-            itemExistente.cantidad++;
+        if (item.cantidad < producto.stock) {
+            item.cantidad++;
             guardarCarrito(carrito);
         } else {
             mostrarMensaje("No hay más unidades disponibles.", "warning");
@@ -90,7 +89,7 @@ function aumentarCantidad(idProducto) {
     }
 
     
-}
+
 
 // 2: disminuir en una unidad la cantidad del producto indicado.
 // Si la cantidad llega a 0, se debe eliminar el producto.
